@@ -1,2 +1,2 @@
 # matrix
- console up for matrix multiplication
+ console app for matrix operation
