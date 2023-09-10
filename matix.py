@@ -36,7 +36,7 @@ def umn_matrix(matrix1,matrix2):
                 result[s][j] += matrix1[s][k] * matrix2[k][j]
     return result
 
-def check_matrix_sum():
+def check_matrix():
     if rows_A != rows_B or cols_A != cols_B:
         raise ArithmeticError("Несовместимае матрицы")
 
@@ -47,12 +47,16 @@ def matrix_sum(matrix1,matrix2):
            result[i][j] = matrix1[i][j] + matrix2[i][j]
     return result
 
-
-
+def sub_matrix(matrix1,matrix2):
+    result = [[0 for row in range(cols_B)] for col in range(rows_A)]
+    for i in range(len(matrix1)):
+        for j in range(len(matrix1[0])):
+           result[i][j] = matrix1[i][j] - matrix2[i][j]
+    return result
 
 
 def cls():
-    print("\n" * 100)
+    print("\n" * 43)
 
 
 arr = []
@@ -63,22 +67,29 @@ rows_A = len(arr)
 cols_A = len(arr[0])
 rows_B = len(arr2)
 cols_B = len(arr2[0])
-result = matrix_sum(arr,arr2)
-show_matrix(result)
+cls()
 print("Выберите арифметическую операцию:")
 print("1)Умножение")
 print("2)Сложение")
 print("3)Вычетание")
-str = input()
-if str == "Умножение":
+str = int(input())
+if str == 1:
     check_matrix_umn(size1[1], size2[0])
     result = umn_matrix(arr, arr2)
+    print("Ответ:")
     show_matrix(result)
-elif str == "Сложение":
-    check_matrix_sum()
+elif str == 2:
+    check_matrix()
     result = matrix_sum(arr,arr2)
+    print("Ответ:")
     show_matrix(result)
-elif str == "Вычетание":
+elif str == 3:
+    check_matrix()
+    result = sub_matrix(arr,arr2)
+    print("Ответ:")
+    show_matrix(result)
+else:
+    raise NameError("Такой операции не существует")
 
 
 
