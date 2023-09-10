@@ -37,8 +37,15 @@ def umn_matrix(matrix1,matrix2):
     return result
 
 def check_matrix_sum():
-    if rows_A == rows_B and cols_A == cols_B:
+    if rows_A != rows_B or cols_A != cols_B:
+        raise ArithmeticError("Несовместимае матрицы")
 
+def matrix_sum(matrix1,matrix2):
+    result = [[0 for row in range(cols_B)] for col in range(rows_A)]
+    for i in range(len(matrix1)):
+        for j in range(len(matrix1[0])):
+           result[i][j] = matrix1[i][j] + matrix2[i][j]
+    return result
 
 
 
@@ -56,6 +63,8 @@ rows_A = len(arr)
 cols_A = len(arr[0])
 rows_B = len(arr2)
 cols_B = len(arr2[0])
+result = matrix_sum(arr,arr2)
+show_matrix(result)
 print("Выберите арифметическую операцию:")
 print("1)Умножение")
 print("2)Сложение")
@@ -67,6 +76,11 @@ if str == "Умножение":
     show_matrix(result)
 elif str == "Сложение":
     check_matrix_sum()
+    result = matrix_sum(arr,arr2)
+    show_matrix(result)
+elif str == "Вычетание":
+
+
 
 
 
